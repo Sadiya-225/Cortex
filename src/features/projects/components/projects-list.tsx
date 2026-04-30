@@ -103,7 +103,7 @@ export const ProjectsList = ({ onViewAll }: ProjectsListProps) => {
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-muted-foreground">
-              Recent projects
+              Recent Projects
             </span>
             <button
               onClick={onViewAll}

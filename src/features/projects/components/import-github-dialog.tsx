@@ -48,11 +48,11 @@ export const ImportGithubDialog = ({
           .post("/api/github/import", {
             json: { url: value.url },
           })
-          .json<{ 
-            success: boolean; 
-            projectId: Id<"projects">,
+          .json<{
+            success: boolean;
+            projectId: Id<"projects">;
             eventId: string;
-          }>()
+          }>();
 
         toast.success("Importing repository...");
         onOpenChange(false);
@@ -84,7 +84,9 @@ export const ImportGithubDialog = ({
             return;
           }
         }
-        toast.error("Unable to import repository. Please check the URL and try again");
+        toast.error(
+          "Unable to import repository. Please check the URL and try again",
+        );
       }
     },
   });
@@ -95,8 +97,8 @@ export const ImportGithubDialog = ({
         <DialogHeader>
           <DialogTitle>Import from GitHub</DialogTitle>
           <DialogDescription>
-            Enter a GitHub repository URL to import. A new project will be
-            created with the repository contents.
+            Enter a GitHub Repository URL to Import. A New Project will be
+            Created with the Repository Contents.
           </DialogDescription>
         </DialogHeader>
         <form
@@ -112,9 +114,7 @@ export const ImportGithubDialog = ({
 
               return (
                 <Field data-invalid={isInvalid}>
-                  <FieldLabel htmlFor={field.name}>
-                    Repository URL
-                  </FieldLabel>
+                  <FieldLabel htmlFor={field.name}>Repository URL</FieldLabel>
                   <Input
                     id={field.name}
                     name={field.name}
@@ -141,10 +141,7 @@ export const ImportGithubDialog = ({
               selector={(state) => [state.canSubmit, state.isSubmitting]}
             >
               {([canSubmit, isSubmitting]) => (
-                <Button 
-                  type="submit"
-                  disabled={!canSubmit || isSubmitting}
-                >
+                <Button type="submit" disabled={!canSubmit || isSubmitting}>
                   {isSubmitting ? "Importing..." : "Import"}
                 </Button>
               )}

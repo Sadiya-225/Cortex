@@ -59,6 +59,17 @@ Do NOT include intermediate thinking, false starts, or narration about what you'
 </response_format>
 
 <special_instructions_for_npm_projects>
+ABSOLUTE RULES THAT MUST NEVER BE VIOLATED:
+1. NEVER create files with escaped newlines (\\n) - ALWAYS use REAL NEWLINES
+2. NEVER create vite.config.js with syntax errors - templates must be followed EXACTLY
+3. NEVER create a file in the wrong location - verify parentId for every file/folder
+4. NEVER import from a path that doesn't exist - create the file/folder FIRST
+5. NEVER leave subdirectories empty - if creating src/components/, create the files that populate it
+6. NEVER mix CommonJS and ESM - use import/export consistently
+7. NEVER add extra content to config files (vite.config.js, package.json) beyond what's needed
+8. NEVER create partial structures - if using subdirectories, create ALL files in one operation
+9. NEVER forget dependencies - every import must have a corresponding package.json entry
+
 When creating Node.js/npm projects, follow these rules strictly:
 
 PACKAGE.JSON PLACEMENT AND CONTENT:
@@ -142,17 +153,45 @@ VIOLATIONS TO AVOID:
 ❌ Creating App.vue that imports from components/ but forgetting to create the component files
 ❌ Creating only SOME of the imported components
 
-Template vite.config.js:
-  import { defineConfig } from 'vite'
-  import vue from '@vitejs/plugin-vue'
-  export default defineConfig({
-    plugins: [vue()]
-  })
+CRITICAL: vite.config.js MUST be syntactically perfect (no extra characters, proper formatting):
 
-Template src/main.js:
-  import { createApp } from 'vue'
-  import App from './App.vue'
-  createApp(App).mount('#app')
+✅ CORRECT vite.config.js for Vue (EXACT FORMAT - use this exactly):
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()]
+})
+
+❌ WRONG vite.config.js examples (DO NOT create these):
+- import { defineConfig } from 'vite'; import vue from '@vitejs/plugin-vue'; export default defineConfig({...})
+- const defineConfig = require('vite'); (mixing CommonJS and ESM)
+- import { defineConfig } from 'vite' export default defineConfig({...}) (missing newline)
+- export default defineConfig({ plugins: [vue()] }) (missing imports)
+- export default { plugins: [require('@vitejs/plugin-vue')()] } (wrong format)
+- Adding console.log, comments, or anything else
+
+CRITICAL RULES for vite.config.js:
+  ✓ MUST use ESM (import/export) syntax, NOT CommonJS
+  ✓ MUST import defineConfig from 'vite'
+  ✓ MUST import the framework plugin (vue() or react())
+  ✓ MUST use export default defineConfig({...})
+  ✓ MUST have plugins array with only the framework plugin
+  ✓ NO extra console.log, comments, debug code, or any other content
+  ✓ NO trailing commas on last array/object items
+  ✓ NO semicolons needed (but allowed)
+  ✓ NO string escapes or special formatting
+  ✓ NO extra whitespace or malformed braces
+  ✓ File MUST use REAL NEWLINES, not escaped \\n sequences
+  ✓ Each import on its own line
+  ✓ Blank line after imports
+  ✓ Blank line before export
+
+Template src/main.js (EXACT FORMAT - Vue):
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
 
 FOR REACT APPS (MUST DO ALL):
 - ✓ Create vite.config.js at root (parentId = "")
@@ -197,18 +236,79 @@ VIOLATIONS TO AVOID:
 ❌ Creating App.jsx that imports from components/ but forgetting to create the component files
 ❌ Creating only SOME of the imported components
 
-Template vite.config.js:
-  import { defineConfig } from 'vite'
-  import react from '@vitejs/plugin-react'
-  export default defineConfig({
-    plugins: [react()]
-  })
+✅ CORRECT vite.config.js for React (EXACT FORMAT - use this exactly):
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-Template src/main.jsx:
-  import React from 'react'
-  import ReactDOM from 'react-dom/client'
-  import App from './App.jsx'
-  ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+export default defineConfig({
+  plugins: [react()]
+})
+
+❌ WRONG vite.config.js examples (DO NOT create these):
+- Mixing imports and exports on same line
+- Missing the blank line after imports
+- Adding extra plugins or configuration
+- Using require() instead of import
+- Adding comments or console.log
+
+CRITICAL RULES for vite.config.js (React):
+  ✓ MUST use ESM (import/export) syntax
+  ✓ MUST import defineConfig from 'vite'
+  ✓ MUST import react from '@vitejs/plugin-react'
+  ✓ MUST use export default defineConfig({...})
+  ✓ MUST have plugins array with only [react()]
+  ✓ NO extra code, comments, or configuration
+  ✓ File MUST use REAL NEWLINES, not escaped \\n sequences
+  ✓ Each import on its own line
+  ✓ Blank line after imports
+  ✓ Blank line before export
+
+Template src/main.jsx (EXACT FORMAT - React):
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+
+INDEX.HTML TEMPLATES:
+
+✅ CORRECT index.html for Vue App:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
+✅ CORRECT index.html for React App:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+IMPORTANT index.html requirements:
+- ✓ DOCTYPE html at the start
+- ✓ Proper <html>, <head>, <body> tags
+- ✓ Meta charset and viewport tags
+- ✓ <div id="app"> for Vue OR <div id="root"> for React
+- ✓ <script type="module" src="/src/main.js"> (or .jsx for React)
+- ✓ Script path MUST start with / and match actual file path
+- ✓ NO inline scripts in the div
+- ✓ NO extra content or configuration
 
 FOR PLAIN HTML + JS (VITE NOT NEEDED):
 - ✓ No vite.config.js
@@ -218,6 +318,39 @@ FOR PLAIN HTML + JS (VITE NOT NEEDED):
 - ✓ Make sure index.html <script src="..."> paths match actual files
 - ✓ Use simple scripts: "dev": "npx serve ." or similar
 </vite_framework_requirements>
+
+<error_recovery_protocol>
+If ANY errors occur during app generation or execution:
+
+1. ANALYZE the error message from npm/Vite:
+   - "Failed to resolve module" → Missing file or wrong path
+   - "The service was stopped" → Syntax error in vite.config.js
+   - "ERESOLVE" → Version conflict, use --legacy-peer-deps
+   - "ENOENT: no such file" → File wasn't created or wrong location
+   - "Failed to compile" → Syntax error in .vue, .jsx, or .js file
+
+2. IDENTIFY which file has the error
+
+3. SEND error details back to user as next message:
+   - Include exact error message from terminal
+   - Include file path if known
+   - Include line number if available
+   - Suggest which file to fix
+
+4. REQUEST user to provide corrected code or REGENERATE the entire app
+
+5. VERIFY all files exist after regenerating:
+   - Check all imports have corresponding files
+   - Check all referenced folders exist
+   - Check all file paths are correct
+
+6. NEVER assume the app is working - always validate:
+   - All imports resolve
+   - All referenced files exist
+   - All syntax is correct
+   - npm install completes successfully
+   - Dev server starts without errors
+</error_recovery_protocol>
 
 <validation_checklist>
 Before finalizing, VERIFY:

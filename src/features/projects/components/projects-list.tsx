@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { formatDistanceToNow } from "date-fns";
-import { AlertCircleIcon, ArrowRightIcon, GlobeIcon, Loader2Icon } from "lucide-react";
+import {
+  AlertCircleIcon,
+  ArrowRightIcon,
+  GlobeIcon,
+  Loader2Icon,
+} from "lucide-react";
 
 import { Kbd } from "@/components/ui/kbd";
 import { Spinner } from "@/components/ui/spinner";
@@ -12,14 +17,14 @@ import { Doc } from "../../../../convex/_generated/dataModel";
 import { useProjectsPartial } from "../hooks/use-projects";
 
 const formatTimestamp = (timestamp: number) => {
-  return formatDistanceToNow(new Date(timestamp), { 
-    addSuffix: true
+  return formatDistanceToNow(new Date(timestamp), {
+    addSuffix: true,
   });
 };
 
 const getProjectIcon = (project: Doc<"projects">) => {
   if (project.importStatus === "completed") {
-    return <FaGithub className="size-3.5 text-muted-foreground" />
+    return <FaGithub className="size-3.5 text-muted-foreground" />;
   }
 
   if (project.importStatus === "failed") {
@@ -33,22 +38,16 @@ const getProjectIcon = (project: Doc<"projects">) => {
   }
 
   return <GlobeIcon className="size-3.5 text-muted-foreground" />;
-}
+};
 
 interface ProjectsListProps {
   onViewAll: () => void;
 }
 
-const ContinueCard = ({ 
-  data
-}: {
-  data: Doc<"projects">;
-}) => {
+const ContinueCard = ({ data }: { data: Doc<"projects"> }) => {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-xs text-muted-foreground">
-        Last updated
-      </span>
+      <span className="text-xs text-muted-foreground">Last Updated</span>
       <Button
         variant="outline"
         asChild
@@ -58,9 +57,7 @@ const ContinueCard = ({
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               {getProjectIcon(data)}
-              <span className="font-medium truncate">
-                {data.name}
-              </span>
+              <span className="font-medium truncate">{data.name}</span>
             </div>
             <ArrowRightIcon className="size-4 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
           </div>
@@ -70,16 +67,12 @@ const ContinueCard = ({
         </Link>
       </Button>
     </div>
-  )
+  );
 };
 
-const ProjectItem = ({ 
-  data
-}: {
-  data: Doc<"projects">;
-}) => {
+const ProjectItem = ({ data }: { data: Doc<"projects"> }) => {
   return (
-    <Link 
+    <Link
       href={`/projects/${data._id}`}
       className="text-sm text-foreground/60 font-medium hover:text-foreground py-1 flex items-center justify-between w-full group"
     >
@@ -94,13 +87,11 @@ const ProjectItem = ({
   );
 };
 
-export const ProjectsList = ({ 
-  onViewAll
-}: ProjectsListProps) => {
+export const ProjectsList = ({ onViewAll }: ProjectsListProps) => {
   const projects = useProjectsPartial(6);
 
   if (projects === undefined) {
-    return <Spinner className="size-4 text-ring" />
+    return <Spinner className="size-4 text-ring" />;
   }
 
   const [mostRecent, ...rest] = projects;
@@ -119,21 +110,16 @@ export const ProjectsList = ({
               className="flex items-center gap-2 text-muted-foreground text-xs hover:text-foreground transition-colors"
             >
               <span>View all</span>
-              <Kbd className="bg-accent border">
-                ⌘K
-              </Kbd>
+              <Kbd className="bg-accent border">⌘K</Kbd>
             </button>
           </div>
           <ul className="flex flex-col">
             {rest.map((project) => (
-              <ProjectItem
-                key={project._id}
-                data={project}
-              />
+              <ProjectItem key={project._id} data={project} />
             ))}
           </ul>
         </div>
       )}
     </div>
-  )
+  );
 };

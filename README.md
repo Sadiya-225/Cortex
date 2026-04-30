@@ -1,17 +1,5 @@
 # Cortex - AI-Powered Cloud IDE
 
-<div align="center">
-
-**The Next Generation Cloud Development Environment**
-
-[![GitHub Stars](https://img.shields.io/badge/project-cortex-blue?style=for-the-badge&logo=github)](https://github.com)
-[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178c6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-
-</div>
-
----
-
 ## 🎯 What is Cortex?
 
 Cortex is a **modern, AI-powered cloud IDE** that brings the intelligence of advanced code editors to your browser. Build, code, and collaborate in real-time with:
@@ -84,62 +72,6 @@ Think of it as **Cursor AI, but cloud-native and open-source.**
 - **File Explorer** - Intuitive directory navigation with VSCode-style icons
 - **File Operations** - Create, rename, delete files and folders
 - **Auto-Save** - Debounced saving prevents data loss
-
----
-
-## 🏗️ Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      Frontend (React 19)                     │
-├─────────────────────────────────────────────────────────────┤
-│ • Next.js 16 App Router                                     │
-│ • CodeMirror 6 Editor with Custom Extensions               │
-│ • Zustand for Tab State Management                         │
-│ • shadcn/ui Components + Tailwind CSS 4                    │
-└────────────────────┬────────────────────────────────────────┘
-                     │
-        ┌────────────┴────────────┐
-        │                         │
-        ▼                         ▼
-┌──────────────────┐    ┌──────────────────┐
-│  Convex Backend  │    │ Inngest Workflows│
-├──────────────────┤    ├──────────────────┤
-│ • Real-time DB   │    │ • AI Processing  │
-│ • Subscriptions  │    │ • File Operations│
-│ • Auth           │    │ • GitHub Sync    │
-│ • File Storage   │    │ • Background Jobs│
-└────────┬─────────┘    └────────┬─────────┘
-         │                       │
-         └───────────┬───────────┘
-                     │
-        ┌────────────┴────────────┐
-        │                         │
-        ▼                         ▼
-┌──────────────────┐    ┌──────────────────┐
-│  Claude AI API   │    │ WebContainer API │
-├──────────────────┤    ├──────────────────┤
-│ • Code Analysis  │    │ • Code Execution │
-│ • Suggestions    │    │ • Terminal Emu   │
-│ • Autonomous     │    │ • npm/node.js    │
-│   File Editing   │    │ • Live Preview   │
-└──────────────────┘    └──────────────────┘
-```
-
-### Technology Stack
-
-| Layer             | Technologies                                         |
-| ----------------- | ---------------------------------------------------- |
-| **Frontend**      | Next.js 16, React 19, TypeScript 5, Tailwind CSS 4   |
-| **Editor**        | CodeMirror 6, Custom Extensions, One Dark Theme      |
-| **State**         | Zustand, Convex Real-time Subscriptions              |
-| **Backend**       | Convex (Real-time DB), Inngest (Background Jobs)     |
-| **AI**            | GPT-4o (primary) or Gemini 2.0 Flash (free tier)     |
-| **Auth**          | Clerk with GitHub OAuth                              |
-| **Execution**     | WebContainer API, xterm.js Terminal                  |
-| **UI Components** | shadcn/ui (50+ components), Radix UI, Lucide Icons   |
-| **Monitoring**    | Sentry Error Tracking, LLM Observability             |
-| **Web Scraping**  | Firecrawl API (optional, for documentation learning) |
 
 ---
 
@@ -405,51 +337,8 @@ The AI agent in Cortex has access to these tools:
 
 ---
 
-## 🤝 Contributing
-
-We welcome contributions! Here's how:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-Cortex builds on the shoulders of giants:
-
-- **[Cursor](https://cursor.sh)** - Inspiration for AI-first development
-- **[CodeMirror](https://codemirror.net)** - World-class code editor
-- **[WebContainer](https://webcontainers.io)** - In-browser execution
-- **[Convex](https://convex.dev)** - Real-time database
-- **[Inngest](https://inngest.com)** - Reliable background jobs
-- **[OpenAI](https://openai.com)** - Advanced AI models
-- **[shadcn/ui](https://ui.shadcn.com)** - Beautiful UI components
-- **[Clerk](https://clerk.com)** - Authentication infrastructure
-
----
-
-## 📧 Support & Questions
-
-- **GitHub Issues** - Report bugs and request features
-- **Documentation** - [Full docs coming soon]
-- **Community** - Join our Discord [link coming soon]
-
----
-
 <div align="center">
 
-**Built with ❤️ for developers who want to code smarter, not harder.**
-
-[Get Started](#-getting-started) • [View Demo](#) • [Report Bug](https://github.com/yourusername/cortex/issues)
+**Built with ❤️ for Developers Who Want to Code Smarter, Not Harder.**
 
 </div>

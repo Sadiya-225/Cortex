@@ -22,13 +22,13 @@ export const UnauthenticatedView = () => {
           <ItemContent>
             <ItemTitle>Unauthorized Access</ItemTitle>
             <ItemDescription>
-              You are not authorized to access this resource.
+              You are Not Authorized to Access this Resource.
             </ItemDescription>
           </ItemContent>
           <ItemActions>
             <SignInButton>
               <Button variant="outline" size="sm">
-                Sign in
+                Sign In
               </Button>
             </SignInButton>
           </ItemActions>

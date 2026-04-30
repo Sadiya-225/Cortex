@@ -128,18 +128,18 @@ Think of it as **Cursor AI, but cloud-native and open-source.**
 
 ### Technology Stack
 
-| Layer             | Technologies                                              |
-| ----------------- | --------------------------------------------------------- |
-| **Frontend**      | Next.js 16, React 19, TypeScript 5, Tailwind CSS 4        |
-| **Editor**        | CodeMirror 6, Custom Extensions, One Dark Theme           |
-| **State**         | Zustand, Convex Real-time Subscriptions                   |
-| **Backend**       | Convex (Real-time DB), Inngest (Background Jobs)          |
-| **AI**            | GPT-4o (primary) or Gemini 2.0 Flash (free tier)          |
-| **Auth**          | Clerk with GitHub OAuth                                   |
-| **Execution**     | WebContainer API, xterm.js Terminal                       |
-| **UI Components** | shadcn/ui (50+ components), Radix UI, Lucide Icons        |
-| **Monitoring**    | Sentry Error Tracking, LLM Observability                  |
-| **Web Scraping**  | Firecrawl API (optional, for documentation learning)      |
+| Layer             | Technologies                                         |
+| ----------------- | ---------------------------------------------------- |
+| **Frontend**      | Next.js 16, React 19, TypeScript 5, Tailwind CSS 4   |
+| **Editor**        | CodeMirror 6, Custom Extensions, One Dark Theme      |
+| **State**         | Zustand, Convex Real-time Subscriptions              |
+| **Backend**       | Convex (Real-time DB), Inngest (Background Jobs)     |
+| **AI**            | GPT-4o (primary) or Gemini 2.0 Flash (free tier)     |
+| **Auth**          | Clerk with GitHub OAuth                              |
+| **Execution**     | WebContainer API, xterm.js Terminal                  |
+| **UI Components** | shadcn/ui (50+ components), Radix UI, Lucide Icons   |
+| **Monitoring**    | Sentry Error Tracking, LLM Observability             |
+| **Web Scraping**  | Firecrawl API (optional, for documentation learning) |
 
 ---
 
@@ -161,7 +161,7 @@ Think of it as **Cursor AI, but cloud-native and open-source.**
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/cortex.git
+   git clone https://github.com/Sadiya-125/Cortex.git
    cd Cortex
    ```
 

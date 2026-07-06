@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   const hasPro = has({ plan: "pro" });
 
   if (!hasPro) {
-    return NextResponse.json({ error: "Pro plan required" }, { status: 403 });
+    return NextResponse.json({ error: "Pro Plan Required" }, { status: 403 });
   }
 
   const body = await request.json();
@@ -47,7 +47,8 @@ export async function POST(request: Request) {
   if (!githubToken) {
     return NextResponse.json(
       {
-        error: "GitHub not connected. Please reconnect your GitHub account with 'repo' scope to import private repositories."
+        error:
+          "GitHub Not Connected. Please Reconnect your GitHub Account with 'repo' Scope to Import Private Repositories.",
       },
       { status: 400 },
     );
@@ -55,12 +56,14 @@ export async function POST(request: Request) {
 
   // Verify token has necessary scopes
   const tokenScopes = tokens.data[0]?.scopes || [];
-  const hasRepoScope = tokenScopes.includes("repo") || tokenScopes.includes("private_repo");
+  const hasRepoScope =
+    tokenScopes.includes("repo") || tokenScopes.includes("private_repo");
 
   if (!hasRepoScope) {
     return NextResponse.json(
       {
-        error: "GitHub account not connected with proper permissions. Please reconnect your GitHub account and grant 'repo' scope to access private repositories."
+        error:
+          "GitHub Account Not Connected with Proper Permissions. Please Reconnect your GitHub Account and Grant 'repo' Scope to Access Private Repositories.",
       },
       { status: 400 },
     );
@@ -70,7 +73,7 @@ export async function POST(request: Request) {
 
   if (!internalKey) {
     return NextResponse.json(
-      { error: "Server configuration error" },
+      { error: "Server Configuration Error" },
       { status: 500 },
     );
   }

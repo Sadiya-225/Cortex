@@ -54,7 +54,7 @@ export const exportToGithub = inngest.createFunction(
     const internalKey = process.env.CORTEX_CONVEX_INTERNAL_KEY;
     if (!internalKey) {
       throw new NonRetriableError(
-        "CORTEX_CONVEX_INTERNAL_KEY is not configured",
+        "CORTEX_CONVEX_INTERNAL_KEY is Not Configured",
       );
     }
 
@@ -140,7 +140,7 @@ export const exportToGithub = inngest.createFunction(
     );
 
     if (fileEntries.length === 0) {
-      throw new NonRetriableError("No files to export");
+      throw new NonRetriableError("No Files to Export");
     }
 
     // Create blobs for each file
@@ -189,7 +189,7 @@ export const exportToGithub = inngest.createFunction(
     });
 
     if (treeItems.length === 0) {
-      throw new NonRetriableError("Failed to create any file blobs");
+      throw new NonRetriableError("Failed to Create any File Blobs");
     }
 
     // Create the tree

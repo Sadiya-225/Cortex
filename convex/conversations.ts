@@ -14,11 +14,11 @@ export const create = mutation({
     const project = await ctx.db.get("projects", args.projectId);
 
     if (!project) {
-      throw new Error("Project not found");
+      throw new Error("Project Not Found");
     }
 
     if (project.ownerId !== identity.subject) {
-      throw new Error("Unauthorized to access this project");
+      throw new Error("Unauthorized to Access this Project");
     }
 
     const conversationId = await ctx.db.insert("conversations", {
@@ -41,17 +41,17 @@ export const getById = query({
     const conversation = await ctx.db.get("conversations", args.id);
 
     if (!conversation) {
-      throw new Error("Conversation not found");
+      throw new Error("Conversation Not Found");
     }
 
     const project = await ctx.db.get("projects", conversation.projectId);
 
     if (!project) {
-      throw new Error("Project not found");
+      throw new Error("Project Not Found");
     }
 
     if (project.ownerId !== identity.subject) {
-      throw new Error("Unauthorized to access this project");
+      throw new Error("Unauthorized to Access this Project");
     }
 
     return conversation;
@@ -68,11 +68,11 @@ export const getByProject = query({
     const project = await ctx.db.get("projects", args.projectId);
 
     if (!project) {
-      throw new Error("Project not found");
+      throw new Error("Project Not Found");
     }
 
     if (project.ownerId !== identity.subject) {
-      throw new Error("Unauthorized to access this project");
+      throw new Error("Unauthorized to Access this Project");
     }
 
     return await ctx.db
@@ -93,23 +93,23 @@ export const getMessages = query({
     const conversation = await ctx.db.get("conversations", args.conversationId);
 
     if (!conversation) {
-      throw new Error("Conversation not found");
+      throw new Error("Conversation Not Found");
     }
 
     const project = await ctx.db.get("projects", conversation.projectId);
 
     if (!project) {
-      throw new Error("Project not found");
+      throw new Error("Project Not Found");
     }
 
     if (project.ownerId !== identity.subject) {
-      throw new Error("Unauthorized to access this project");
+      throw new Error("Unauthorized to Access this Project");
     }
 
     return await ctx.db
       .query("messages")
       .withIndex("by_conversation", (q) =>
-        q.eq("conversationId", args.conversationId)
+        q.eq("conversationId", args.conversationId),
       )
       .order("asc")
       .collect();

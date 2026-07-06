@@ -42,7 +42,7 @@ export const importGithubRepo = inngest.createFunction(
     const internalKey = process.env.CORTEX_CONVEX_INTERNAL_KEY;
     if (!internalKey) {
       throw new NonRetriableError(
-        "CORTEX_CONVEX_INTERNAL_KEY is not configured",
+        "CORTEX_CONVEX_INTERNAL_KEY is Not Configured",
       );
     }
 
@@ -79,13 +79,14 @@ export const importGithubRepo = inngest.createFunction(
           return data;
         } catch (masterError) {
           // Provide detailed error message for debugging
-          const error = (masterError as any)?.status === 404
-            ? new Error(
-                `Repository not found or inaccessible. ` +
-                `For private repositories, ensure your GitHub token has 'repo' scope. ` +
-                `Reconnect your GitHub account in profile settings.`
-              )
-            : masterError;
+          const error =
+            (masterError as any)?.status === 404
+              ? new Error(
+                  `Repository Not Found or Inaccessible. ` +
+                    `For Private Repositories, Ensure Your GitHub Token has 'repo' Scope. ` +
+                    `Reconnect your GitHub Account in Profile Settings.`,
+                )
+              : masterError;
           throw error;
         }
       }
@@ -189,7 +190,7 @@ export const importGithubRepo = inngest.createFunction(
             });
           }
         } catch {
-          console.error(`Failed to import file: ${file.path}`);
+          console.error(`Failed to Import File: ${file.path}`);
         }
       }
     });

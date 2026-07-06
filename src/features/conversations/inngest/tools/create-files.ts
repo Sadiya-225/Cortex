@@ -18,7 +18,7 @@ const paramsSchema = z.object({
       z.object({
         name: z.string().min(1, "File name cannot be empty"),
         content: z.string(),
-      })
+      }),
     )
     .min(1, "Provide at least one file to create"),
 });
@@ -35,14 +35,14 @@ export const createCreateFilesTool = ({
       parentId: z
         .string()
         .describe(
-          "The ID of the parent folder. Use empty string for root level. Must be a valid folder ID from listFiles."
+          "The ID of the parent folder. Use empty string for root level. Must be a valid folder ID from listFiles.",
         ),
       files: z
         .array(
           z.object({
             name: z.string().describe("The file name including extension"),
             content: z.string().describe("The file content"),
-          })
+          }),
         )
         .describe("Array of files to create"),
     }),
@@ -99,6 +99,6 @@ export const createCreateFilesTool = ({
       } catch (error) {
         return `Error creating files: ${error instanceof Error ? error.message : "Unknown error"}`;
       }
-    }
+    },
   });
 };

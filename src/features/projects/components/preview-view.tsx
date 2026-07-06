@@ -79,7 +79,7 @@ export const PreviewView = ({ projectId }: { projectId: Id<"projects"> }) => {
           className="h-full rounded-none"
           disabled={isLoading}
           onClick={restart}
-          title="Restart container"
+          title="Restart Container"
         >
           <RefreshCwIcon className="size-3" />
         </Button>
@@ -90,7 +90,7 @@ export const PreviewView = ({ projectId }: { projectId: Id<"projects"> }) => {
             variant="ghost"
             className="h-full rounded-none"
             onClick={handleReloadIframe}
-            title="Reload preview"
+            title="Reload Preview"
           >
             <RotateCcwIcon className="size-3" />
           </Button>
@@ -104,7 +104,7 @@ export const PreviewView = ({ projectId }: { projectId: Id<"projects"> }) => {
             </div>
           )}
           {previewUrl && <span className="truncate">{previewUrl}</span>}
-          {!isLoading && !previewUrl && !error && <span>Ready to preview</span>}
+          {!isLoading && !previewUrl && !error && <span>Ready to Preview</span>}
         </div>
 
         <Button
@@ -167,7 +167,7 @@ export const PreviewView = ({ projectId }: { projectId: Id<"projects"> }) => {
                 className="size-full border-0"
                 title="Preview"
                 onError={() => {
-                  toast.error("Failed to load preview. Try restarting.");
+                  toast.error("Failed to Load Preview. Try Restarting.");
                 }}
               />
             )}

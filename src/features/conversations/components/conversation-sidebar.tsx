@@ -59,7 +59,7 @@ export const ConversationSidebar = ({
           const newInput = prevInput
             ? `${prevInput}\n\n${selectedCode}`
             : selectedCode;
-          toast.success("Code added to chat");
+          toast.success("Code Added to Chat");
           return newInput;
         });
       }
@@ -204,7 +204,7 @@ export const ConversationSidebar = ({
                     </div>
                   ) : message.status === "cancelled" ? (
                     <span className="text-muted-foreground italic">
-                      Request cancelled
+                      Request Cancelled
                     </span>
                   ) : (
                     <MessageResponse>{message.content}</MessageResponse>
@@ -220,9 +220,9 @@ export const ConversationSidebar = ({
                             await navigator.clipboard.writeText(
                               message.content,
                             );
-                            toast.success("Copied to clipboard");
+                            toast.success("Copied to Clipboard");
                           } catch (error) {
-                            toast.error("Failed to copy");
+                            toast.error("Failed to Copy");
                           }
                         }}
                         label="Copy"

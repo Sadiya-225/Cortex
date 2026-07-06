@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   if (!internalKey) {
     return NextResponse.json(
-      { error: "Server configuration error" },
+      { error: "Server Configuration Error" },
       { status: 500 },
     );
   }

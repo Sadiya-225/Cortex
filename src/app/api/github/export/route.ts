@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   const hasPro = has({ plan: "pro" });
 
   if (!hasPro) {
-    return NextResponse.json({ error: "Pro plan required" }, { status: 403 });
+    return NextResponse.json({ error: "Pro Plan Required" }, { status: 403 });
   }
 
   const body = await request.json();
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
   if (!githubToken) {
     return NextResponse.json(
-      { error: "GitHub not connected. Please reconnect your GitHub account." },
+      { error: "GitHub Not Connected. Please Reconnect Your GitHub Account." },
       { status: 400 },
     );
   }
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 
   if (!internalKey) {
     return NextResponse.json(
-      { error: "Server configuration error" },
+      { error: "Server Configuration Error" },
       { status: 500 },
     );
   }

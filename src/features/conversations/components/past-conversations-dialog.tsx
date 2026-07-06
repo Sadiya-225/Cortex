@@ -20,7 +20,7 @@ interface PastConversationsDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSelect: (conversationId: Id<"conversations">) => void;
-};
+}
 
 export const PastConversationsDialog = ({
   projectId,
@@ -40,11 +40,11 @@ export const PastConversationsDialog = ({
       open={open}
       onOpenChange={onOpenChange}
       title="Past Conversations"
-      description="Search and select a past conversation"
+      description="Search and Select a Past Conversation"
     >
-      <CommandInput placeholder="Search conversations..." />
+      <CommandInput placeholder="Search Conversations..." />
       <CommandList>
-        <CommandEmpty>No conversations found.</CommandEmpty>
+        <CommandEmpty>No Conversations Found.</CommandEmpty>
         <CommandGroup heading="Conversations">
           {conversations?.map((conversation) => (
             <CommandItem

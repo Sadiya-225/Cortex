@@ -63,7 +63,7 @@ export const processMessage = inngest.createFunction(
 
     if (!internalKey) {
       throw new NonRetriableError(
-        "CORTEX_CONVEX_INTERNAL_KEY is not configured",
+        "CORTEX_CONVEX_INTERNAL_KEY is Not Configured",
       );
     }
 
@@ -79,7 +79,7 @@ export const processMessage = inngest.createFunction(
     });
 
     if (!conversation) {
-      throw new NonRetriableError("Conversation not found");
+      throw new NonRetriableError("Conversation Not Found");
     }
 
     // Fetch recent messages for conversation context

@@ -6,11 +6,11 @@ const validateInternalKey = (key: string) => {
   const internalKey = process.env.CORTEX_CONVEX_INTERNAL_KEY;
 
   if (!internalKey) {
-    throw new Error("CORTEX_CONVEX_INTERNAL_KEY is not configured");
+    throw new Error("CORTEX_CONVEX_INTERNAL_KEY is Not Configured");
   }
 
   if (key !== internalKey) {
-    throw new Error("Invalid internal key");
+    throw new Error("Invalid Internal Key");
   }
 };
 
@@ -195,7 +195,7 @@ export const updateFile = mutation({
     const file = await ctx.db.get(args.fileId);
 
     if (!file) {
-      throw new Error("File not found");
+      throw new Error("File Not Found");
     }
 
     await ctx.db.patch(args.fileId, {
@@ -231,7 +231,7 @@ export const createFile = mutation({
     );
 
     if (existing) {
-      throw new Error("File already exists");
+      throw new Error("File Already Exists");
     }
 
     const fileId = await ctx.db.insert("files", {
@@ -281,7 +281,7 @@ export const createFiles = mutation({
         results.push({
           name: file.name,
           fileId: existing._id,
-          error: "File already exists",
+          error: "File Already Exists",
         });
         continue;
       }
@@ -325,7 +325,7 @@ export const createFolder = mutation({
     );
 
     if (existing) {
-      throw new Error("Folder already exists");
+      throw new Error("Folder Already Exists");
     }
 
     const fileId = await ctx.db.insert("files", {
@@ -352,7 +352,7 @@ export const renameFile = mutation({
 
     const file = await ctx.db.get(args.fileId);
     if (!file) {
-      throw new Error("File not found");
+      throw new Error("File Not Found");
     }
 
     // Check if a file with the new name already exists in the same parent folder
@@ -394,7 +394,7 @@ export const deleteFile = mutation({
 
     const file = await ctx.db.get(args.fileId);
     if (!file) {
-      throw new Error("File not found");
+      throw new Error("File Not Found");
     }
 
     // Recursively delete file/folder and all descendants
@@ -493,7 +493,7 @@ export const createBinaryFile = mutation({
     );
 
     if (existing) {
-      throw new Error("File already exists");
+      throw new Error("File Already Exists");
     }
 
     const fileId = await ctx.db.insert("files", {

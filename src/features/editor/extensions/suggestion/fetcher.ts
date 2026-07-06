@@ -50,7 +50,7 @@ export const fetcher = async (
     }
 
     // Log detailed error for debugging
-    console.error("Suggestion fetcher error:", {
+    console.error("Suggestion Fetcher Error:", {
       error,
       message: error instanceof Error ? error.message : "Unknown error",
       stack: error instanceof Error ? error.stack : undefined,
@@ -67,7 +67,7 @@ export const fetcher = async (
       return null;
     } else {
       // For other errors, show a generic message but include helpful context
-      console.warn("Failed to fetch AI suggestion - returning null");
+      console.warn("Failed to Fetch AI Suggestion - Returning Null");
     }
 
     return null;

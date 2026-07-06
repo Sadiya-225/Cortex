@@ -9,21 +9,18 @@ export const demoGenerate = inngest.createFunction(
   { id: "demo-generate" },
   { event: "demo/generate" },
   async ({ event, step }) => {
-    const { prompt } = event.data as { prompt: string; };
+    const { prompt } = event.data as { prompt: string };
 
-    const urls = await step.run("exctract-urls", async () => {
+    const urls = (await step.run("exctract-urls", async () => {
       return prompt.match(URL_REGEX) ?? [];
-    }) as string[];
+    })) as string[];
 
     const scrapedContent = await step.run("scrape-urls", async () => {
       const results = await Promise.all(
         urls.map(async (url) => {
-          const result = await firecrawl.scrape(
-            url,
-            { formats: ["markdown"] },
-          );
+          const result = await firecrawl.scrape(url, { formats: ["markdown"] });
           return result.markdown ?? null;
-        })
+        }),
       );
       return results.filter(Boolean).join("\n\n");
     });
@@ -34,7 +31,7 @@ export const demoGenerate = inngest.createFunction(
 
     await step.run("generate-text", async () => {
       return await generateText({
-        model: openai('gpt-4o-mini'),
+        model: openai("gpt-4o-mini"),
         prompt: finalPrompt,
         experimental_telemetry: {
           isEnabled: true,
@@ -42,7 +39,7 @@ export const demoGenerate = inngest.createFunction(
           recordOutputs: true,
         },
       });
-    })
+    });
   },
 );
 
@@ -51,7 +48,7 @@ export const demoError = inngest.createFunction(
   { event: "demo/error" },
   async ({ step }) => {
     await step.run("fail", async () => {
-      throw new Error("Inngest error: Background job failed!");
+      throw new Error("Inngest Error: Background Job Failed!");
     });
-  }
+  },
 );

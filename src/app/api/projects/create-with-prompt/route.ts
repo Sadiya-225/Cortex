@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
   if (!internalKey) {
     return NextResponse.json(
-      { error: "Internal key not configured" },
+      { error: "Internal Key Not Configured" },
       { status: 500 },
     );
   }

@@ -43,14 +43,14 @@ export async function POST(request: Request) {
 
     if (!selectedCode) {
       return NextResponse.json(
-        { error: "Selected code is required" },
+        { error: "Selected Code is Required" },
         { status: 400 },
       );
     }
 
     if (!instruction) {
       return NextResponse.json(
-        { error: "Instruction is required" },
+        { error: "Instruction is Required" },
         { status: 400 },
       );
     }
@@ -111,20 +111,20 @@ export async function POST(request: Request) {
 
     if (error instanceof Error && error.message.includes("timeout")) {
       return NextResponse.json(
-        { error: "Request timed out. Please try again." },
+        { error: "Request Timed Out. Please Try Again." },
         { status: 408 },
       );
     }
 
     if (error instanceof Error && error.message.includes("401")) {
       return NextResponse.json(
-        { error: "OpenAI API authentication failed" },
+        { error: "OpenAI API Authentication Failed" },
         { status: 401 },
       );
     }
 
     return NextResponse.json(
-      { error: "Failed to generate edit. Please try again." },
+      { error: "Failed to Generate Edit. Please Try Again." },
       { status: 500 },
     );
   }

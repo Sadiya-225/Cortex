@@ -148,9 +148,9 @@ export const ExportPopover = ({ projectId }: ExportPopoverProps) => {
       return (
         <div className="flex flex-col items-center gap-3">
           <CheckCircle2Icon className="size-6 text-emerald-500" />
-          <p className="text-sm font-medium">Repository created</p>
+          <p className="text-sm font-medium">Repository Created</p>
           <p className="text-xs text-muted-foreground text-center">
-            Your project has been exported to GitHub.
+            Your Project has been Exported to GitHub.
           </p>
           <div className="flex flex-col w-full gap-2">
             <Button size="sm" className="w-full" asChild>
@@ -180,9 +180,9 @@ export const ExportPopover = ({ projectId }: ExportPopoverProps) => {
       return (
         <div className="flex flex-col items-center gap-3">
           <XCircleIcon className="size-6 text-rose-500" />
-          <p className="text-sm font-medium">Unable to export</p>
+          <p className="text-sm font-medium">Unable to Export</p>
           <p className="text-xs text-muted-foreground text-center">
-            Something went wrong. Please try again.
+            Something Went Wrong. Please Try Again.
           </p>
           <Button
             size="sm"
